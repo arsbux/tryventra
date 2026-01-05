@@ -1,0 +1,139 @@
+.legalPage {
+    --bg: #ffffff;
+    --text-main: #000000;
+    --text-secondary: #666666;
+    --border: #f3f4f6;
+
+    background-color: var(--bg);
+    min-height: 100vh;
+}
+
+.legalContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+    font-family: 'Inter', sans-serif;
+    color: #111;
+    line-height: 1.6;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.logoArea {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logoText {
+    font-weight: 850;
+    font-size: 1.4rem;
+    letter-spacing: -0.04em;
+    color: #000;
+}
+
+.ctaSecondary {
+    background: #fff;
+    color: #000;
+    border: 1px solid #eaeaea;
+    text-decoration: none;
+    font-weight: 750;
+    transition: all 0.2s;
+}
+
+.ctaSecondary:hover {
+    background: #fafafa;
+    border-color: #d1d5db;
+}
+
+.legalHeader {
+    margin-bottom: 60px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 40px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+}
+
+.lastUpdated {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 40px 0 20px;
+    letter-spacing: -0.02em;
+}
+
+.content p {
+    margin-bottom: 20px;
+}
+
+.content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.content li {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+    padding: 100px 40px 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+.footerTop {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.footerLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 1.4rem;
+}
+
+.footerLinks {
+    display: flex;
+    gap: 80px;
+}
+
+.footerBottom {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.footerNavLink {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.footerNavLink:hover {
+    color: #000;
+}

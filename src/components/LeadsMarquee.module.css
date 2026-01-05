@@ -1,0 +1,115 @@
+.section {
+    padding-bottom: 120px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.header {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+}
+
+.category {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6366f1;
+    margin-bottom: 8px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    color: #000;
+}
+
+.tableWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: white;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.stickyHeader {
+    position: relative;
+    z-index: 20;
+    background: white;
+    border-bottom: 2px solid #f3f4f6;
+}
+
+/* Override LeadsTable internal container styles for the marquee */
+.stickyHeader :global([class*="tableContainer"]),
+.marqueeTrack :global([class*="tableContainer"]) {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+.stickyHeader :global(table) {
+    margin-bottom: 0 !important;
+}
+
+.marqueeContainer {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.marqueeTrack {
+    display: flex;
+    flex-direction: column;
+    animation: scrollVertical 60s linear infinite;
+}
+
+@keyframes scrollVertical {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+.maskTop,
+.maskBottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.maskTop {
+    top: 50px;
+    /* Below the sticky header */
+    background: linear-gradient(to bottom, white, transparent);
+}
+
+.maskBottom {
+    bottom: 0;
+    background: linear-gradient(to top, white, transparent);
+}
+
+@media (max-width: 1000px) {
+    .tableWrapper {
+        margin: 0 20px;
+        overflow-x: auto;
+    }
+
+    .stickyHeader :global(table),
+    .marqueeTrack :global(table) {
+        min-width: 1000px;
+    }
+}

@@ -1,0 +1,140 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    background: transparent;
+    padding: 24px 0;
+    overflow: hidden;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.scrollWrapper {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.track {
+    display: flex;
+    gap: 16px;
+    padding: 4px;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+}
+
+.reverse {
+    animation: scrollReverse 30s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollReverse {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    padding: 10px 16px;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    min-width: 180px;
+}
+
+.card:hover {
+    border-color: #6366f1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+}
+
+.iconWrapper {
+    width: 32px;
+    height: 32px;
+    background: #f9fafb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6366f1;
+}
+
+.name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111;
+    flex: 1;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #db2777;
+    background: #fdf2f8;
+    padding: 4px 10px;
+    border-radius: 99px;
+    border: 1px solid #fbcfe8;
+}
+
+.check {
+    color: #10b981;
+}
+
+.spinner {
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.03) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .track {
+        animation-duration: 20s;
+    }
+}

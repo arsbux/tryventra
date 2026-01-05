@@ -1,0 +1,120 @@
+.card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    border-color: #999;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.headerLeft {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    color: #666;
+}
+
+.headerTexts {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.platform {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #171717;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.typeTag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #666;
+}
+
+.scoreBadge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    background: #f7f7f7;
+    border-radius: 4px;
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #171717;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.deepSearchSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.sectionLabel {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.signalText,
+.insightText {
+    font-size: 0.8rem;
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #f7f7f7;
+}
+
+.button {
+    display: inline-block;
+    width: 100%;
+    padding: 8px 12px;
+    background: #171717;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: 6px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.button:hover {
+    background: #000;
+}

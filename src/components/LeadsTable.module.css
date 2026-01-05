@@ -1,0 +1,201 @@
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+    min-width: 1000px;
+    text-align: left;
+}
+
+.th {
+    background: #fdfdfd;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.65rem;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f7f7f7;
+    color: #444;
+    vertical-align: middle;
+}
+
+.row:last-child .td {
+    border-bottom: none;
+}
+
+.row:hover {
+    background-color: #fafafa;
+}
+
+.companyCell {
+    font-weight: 600;
+    color: #111;
+}
+
+.tableLink {
+    color: #111;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.tableLink:hover {
+    text-decoration: underline;
+}
+
+.contactCell {
+    max-width: 250px;
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.insightCell {
+    max-width: 300px;
+    color: #444;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+}
+
+/* Contact Info Sub-styles */
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: inherit;
+}
+
+.contactRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.contactValue {
+    font-size: 0.75rem;
+}
+
+.contactLink {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.75rem;
+}
+
+.contactLink:hover {
+    text-decoration: underline;
+}
+
+.personalInfo {
+    font-weight: 700;
+    color: #111;
+    font-size: 0.8125rem;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Stage Select (Pill) */
+.cellSelectWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.cellSelect {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    border-radius: 4px;
+    /* Changed to match Scout Score Tag roughly, or keep rounded pill */
+    padding: 4px 24px 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24' fill='none' stroke='%23444' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    transition: all 0.15s ease;
+    display: inline-block;
+}
+
+.statusProspect {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+/* Default gray */
+.statusPitching {
+    background-color: #fffbeb;
+    color: #d97706;
+}
+
+/* Yellow/Orange */
+.statusSecured {
+    background-color: #e6ccff;
+    color: #5a1a99;
+}
+
+/* Purple */
+.statusProposal {
+    background-color: #d9e6ff;
+    color: #2b4699;
+}
+
+/* Blue */
+.statusClosed {
+    background-color: #f0fdf4;
+    color: #16a34a;
+}
+
+/* Green */
+.statusLost {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Red */
+.statusDefault {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+.actionButton {
+    padding: 6px 12px;
+    background: #111;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: all 0.15s;
+}
+
+.actionButton:hover {
+    background: #000;
+}
