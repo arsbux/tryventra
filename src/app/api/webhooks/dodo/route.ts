@@ -3,6 +3,11 @@ import crypto from 'crypto';
 import { supabaseAdmin } from '@/lib/supabase-admin';
 
 export async function POST(request: Request) {
+    if (!supabaseAdmin) {
+        console.error('Webhook Error: supabaseAdmin is not initialized. Please check your Supabase environment variables.');
+        return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
+    }
+
     try {
         const body = await request.text();
         const signature = request.headers.get('x-dodo-signature');
