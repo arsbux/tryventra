@@ -21,7 +21,6 @@ export async function POST(request: Request) {
             metadata: {
                 user_id: userId,
             },
-            billing_currency: 'USD',
             return_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/desk`,
         });
 
