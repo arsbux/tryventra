@@ -234,17 +234,34 @@
     }
 
     .sources {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
         width: 100%;
+        max-width: 500px;
+        padding: 0 20px;
     }
 
     .sourceCard {
-        width: 200px;
+        width: auto;
     }
 
     .svg {
         display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .sources {
+        gap: 8px;
+        padding: 0 16px;
+    }
+
+    .name {
+        font-size: 0.75rem;
+    }
+
+    .label {
+        font-size: 0.65rem;
     }
 }
