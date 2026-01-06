@@ -110,6 +110,19 @@ export default function LandingPage() {
                 </div>
             </header>
 
+            {/* Early Adopters */}
+            <section className={styles.earlyAdopters}>
+                <h3 className={styles.earlyAdoptersTitle}>Trusted by early adopters from</h3>
+                <div className={styles.adoptersGrid}>
+                    <img src="/early-adopters/image.png" alt="Adopter Logo" className={styles.adopterLogo} />
+                    <img src="/early-adopters/image copy.png" alt="Adopter Logo" className={styles.adopterLogo} />
+                    <img src="/early-adopters/image copy 2.png" alt="Adopter Logo" className={styles.adopterLogo} />
+                    <img src="/early-adopters/image copy 3.png" alt="Adopter Logo" className={styles.adopterLogo} />
+                    <img src="/early-adopters/image copy 4.png" alt="Adopter Logo" className={styles.adopterLogo} />
+                    <img src="/early-adopters/image copy 5.png" alt="Adopter Logo" className={styles.adopterLogo} />
+                </div>
+            </section>
+
             {/* Data Flow Illustration */}
             <section style={{ background: '#fff' }}>
                 <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center', paddingTop: '80px' }}>
