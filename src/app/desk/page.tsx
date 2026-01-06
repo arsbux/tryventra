@@ -656,7 +656,7 @@ export default function Home() {
             </div>
           )}
 
-          {results.length > 0 && (
+          {(results.length > 0 || activeTab === 'pipeline') && (
             <section className={styles.resultsSection}>
               <div className={styles.resultsHeader}>
                 <div>
@@ -754,23 +754,36 @@ export default function Home() {
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        padding: '80px 20px',
+                        padding: '100px 24px',
                         textAlign: 'center',
-                        background: 'white',
-                        borderRadius: '12px',
-                        border: '1px solid #eaeaea'
+                        background: 'rgba(255, 255, 255, 0.5)',
+                        backdropFilter: 'blur(8px)',
+                        borderRadius: '24px',
+                        border: '1px solid rgba(0, 0, 0, 0.05)',
+                        marginTop: '20px'
                       }}>
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '24px' }}>
-                          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                          <circle cx="9" cy="7" r="4"></circle>
-                          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                        <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: '#111', marginBottom: '12px' }}>
-                          No Leads Yet
+                        <div style={{
+                          width: '80px',
+                          height: '80px',
+                          borderRadius: '20px',
+                          background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginBottom: '24px'
+                        }}>
+                          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                        </div>
+                        <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#111', marginBottom: '12px', letterSpacing: '-0.02em' }}>
+                          Your Pipeline is Empty
                         </h3>
-                        <p style={{ fontSize: '0.95rem', color: '#666', marginBottom: '32px', maxWidth: '400px' }}>
-                          Start building your pipeline by discovering qualified leads with our AI-powered Lead Scout.
+                        <p style={{ fontSize: '1.05rem', color: '#666', marginBottom: '32px', maxWidth: '440px', lineHeight: '1.6' }}>
+                          Start building your lead database by discovering high-intent opportunities with the Lead Scout.
                         </p>
                         <button
                           onClick={() => setActiveTab('scout')}
@@ -778,31 +791,31 @@ export default function Home() {
                             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                             color: 'white',
                             border: 'none',
-                            padding: '14px 32px',
-                            borderRadius: '8px',
+                            padding: '16px 36px',
+                            borderRadius: '14px',
                             fontSize: '1rem',
                             fontWeight: 600,
                             cursor: 'pointer',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '8px',
-                            transition: 'transform 0.2s, box-shadow 0.2s',
-                            boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)'
+                            gap: '10px',
+                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            boxShadow: '0 10px 25px rgba(102, 126, 234, 0.3)',
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
+                            e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+                            e.currentTarget.style.boxShadow = '0 15px 30px rgba(102, 126, 234, 0.4)';
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
+                            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                            e.currentTarget.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.3)';
                           }}
                         >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.35-4.35"></path>
                           </svg>
-                          Discover Leads
+                          Start Discovery
                         </button>
                       </div>
                     );
@@ -966,7 +979,7 @@ export default function Home() {
             </div>
           )}
         </div>
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }
