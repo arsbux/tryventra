@@ -15,8 +15,8 @@ export async function POST(request: Request) {
                 quantity: 1,
             }],
             customer: {
-                email: customerEmail || 'customer@example.com',
-                name: customerName || 'Valued Customer',
+                email: customerEmail,
+                name: customerName,
             },
             metadata: {
                 user_id: userId,
