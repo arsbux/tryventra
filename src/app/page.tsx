@@ -100,8 +100,7 @@ export default function LandingPage() {
                 </p>
 
                 <div className={styles.ctaGroup}>
-                    <Link href="/login" className={styles.whiteBtn}>Talk to Sales</Link>
-                    <Link href="/login" className={styles.blackBtn}>Start Free Trial</Link>
+                    <Link href="/login" className={styles.blackBtn}>Get Started</Link>
                 </div>
 
                 {/* Main Product Preview (The Table) */}
