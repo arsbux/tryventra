@@ -25,6 +25,7 @@
     font-size: 0.8125rem;
     min-width: 1000px;
     text-align: left;
+    table-layout: fixed;
 }
 
 .th {
@@ -43,6 +44,9 @@
     border-bottom: 1px solid #f7f7f7;
     color: #444;
     vertical-align: middle;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .row:last-child .td {
@@ -198,4 +202,15 @@
 
 .actionButton:hover {
     background: #000;
+}
+@media (max-width: 768px) {
+    .table {
+        min-width: 800px;
+    }
+
+    .contactCell, .insightCell {
+        max-width: none;
+        word-break: normal;
+        overflow: visible;
+    }
 }
