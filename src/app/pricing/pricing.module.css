@@ -232,18 +232,6 @@
     font-weight: 500;
 }
 
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        gap: 32px;
-    }
-
-    .highlightCard {
-        order: -1;
-    }
-}
-
 /* Footer */
 .footer {
     padding: 100px 40px 60px;
@@ -288,4 +276,72 @@
 
 .footerNavLink:hover {
     color: #000;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        gap: 32px;
+    }
+
+    .highlightCard {
+        order: -1;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 40px 24px 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 20px 24px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 0.95rem;
+    }
+
+    .footerTop {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .footerTop>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footerLinks {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .price {
+        font-size: 2.5rem;
+    }
 }
