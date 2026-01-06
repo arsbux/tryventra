@@ -104,16 +104,24 @@ export default function Home() {
       }
 
       // Check for active subscription in Supabase
-      const { data: subscription } = await supabase
+      const { data: subscription, error } = await supabase
         .from('subscriptions')
         .select('status')
         .eq('user_id', session.user.id)
         .in('status', ['active', 'one-time'])
-        .single();
+        .maybeSingle();
+
+      if (error) {
+        console.error('Subscription Check Error:', error);
+      }
 
       if (!subscription) {
-        router.push("/pricing");
-        return;
+        console.warn('No active subscription found for user:', session.user.id);
+        // Allow access during test mode for easier development
+        if (process.env.NEXT_PUBLIC_DODO_ENVIRONMENT === 'live_mode') {
+          router.push("/pricing");
+          return;
+        }
       }
 
       setUserId(session.user.id);

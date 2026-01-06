@@ -33,31 +33,34 @@ export async function POST(request: Request) {
         switch (eventType) {
             case 'checkout_session.completed': {
                 const userId = data.metadata?.user_id || data.customer?.metadata?.user_id;
+                console.log(`Processing checkout for User: ${userId}`);
                 if (userId) {
-                    // Assuming supabaseAdmin is initialized elsewhere, e.g., in a utility file
-                    // import { createAdminClient } from '@/utils/supabase/admin';
-                    // const supabaseAdmin = createAdminClient();
-                    await supabaseAdmin.from('subscriptions').upsert({
+                    const { error } = await supabaseAdmin.from('subscriptions').upsert({
                         user_id: userId,
                         plan_tier: data.product_cart?.[0]?.product_name || 'Starter',
                         status: 'one-time',
                         provider_subscription_id: data.checkout_id,
                         provider_customer_id: data.customer?.customer_id,
-                    });
+                    }, { onConflict: 'user_id' });
+
+                    if (error) console.error('Database Error (upsert):', error);
                 }
                 break;
             }
             case 'subscription.created': {
                 const userId = data.metadata?.user_id || data.customer?.metadata?.user_id;
+                console.log(`Processing subscription for User: ${userId}`);
                 if (userId) {
-                    await supabaseAdmin.from('subscriptions').upsert({
+                    const { error } = await supabaseAdmin.from('subscriptions').upsert({
                         user_id: userId,
                         plan_tier: data.plan_name || 'Growth',
                         status: 'active',
                         provider_subscription_id: data.subscription_id,
                         provider_customer_id: data.customer?.customer_id,
                         current_period_end: data.current_period_end,
-                    });
+                    }, { onConflict: 'user_id' });
+
+                    if (error) console.error('Database Error (upsert):', error);
                 }
                 break;
             }
