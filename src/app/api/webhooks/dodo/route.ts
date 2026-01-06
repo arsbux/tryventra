@@ -39,7 +39,7 @@ export async function POST(request: Request) {
                         user_id: userId,
                         plan_tier: data.product_cart?.[0]?.product_name || 'Starter',
                         status: 'one-time',
-                        provider_subscription_id: data.checkout_id,
+                        provider_subscription_id: data.payment_id,
                         provider_customer_id: data.customer?.customer_id,
                     }, { onConflict: 'user_id' });
 
