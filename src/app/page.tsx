@@ -9,6 +9,7 @@ import DataFlowIllustration from "@/components/DataFlowIllustration";
 import NicheShowcase from "@/components/NicheShowcase";
 import AgentLiveDemo from "@/components/AgentLiveDemo";
 import LeadsMarquee from "@/components/LeadsMarquee";
+import PricingSection from "@/components/PricingSection";
 
 const DEMO_LEADS: Lead[] = [
     {
@@ -215,6 +216,8 @@ export default function LandingPage() {
             <AgentLiveDemo />
             <LeadsMarquee />
 
+            <PricingSection />
+
             {/* Footer */}
             <footer className={styles.footer}>
                 <div className={styles.footerTop}>
@@ -230,9 +233,9 @@ export default function LandingPage() {
                     <div className={styles.footerLinks}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <b style={{ color: '#000' }}>Product</b>
-                            <a href="#" className={styles.navLink}>Lead Scout</a>
-                            <a href="#" className={styles.navLink}>Intent Signals</a>
-                            <a href="#" className={styles.navLink}>Pricing</a>
+                            <a href="#features" className={styles.navLink}>Lead Scout</a>
+                            <a href="#signals" className={styles.navLink}>Intent Signals</a>
+                            <Link href="/pricing" className={styles.navLink}>Pricing</Link>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <b style={{ color: '#000' }}>Contact</b>

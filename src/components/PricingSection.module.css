@@ -1,0 +1,245 @@
+.section {
+    padding-top: 100px;
+    padding-bottom: 15px;
+    background: #fff;
+    width: 100%;
+    color: #000;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    margin-bottom: 20px;
+}
+
+.foundingNote {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fffbeb;
+    color: #92400e;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid #fef3c7;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.card {
+    background: white;
+    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+}
+
+.highlightCard {
+    border: 1.5px solid #000;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.06);
+    z-index: 10;
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.tierName {
+    font-size: 0.725rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.priceWrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.period {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.cta {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 750;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-top: auto;
+    /* Pushes button to bottom */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.ctaPrimary {
+    background: #000;
+    color: #fff;
+}
+
+.ctaPrimary:hover {
+    background: #222;
+}
+
+.ctaSecondary {
+    background: #fff;
+    color: #000;
+    border: 1px solid #eaeaea;
+}
+
+.ctaSecondary:hover {
+    background: #fafafa;
+}
+
+.featureList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.featureGroupTitle {
+    font-weight: 800;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin: 16px 0 4px;
+}
+
+.featureItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #374151;
+    line-height: 1.4;
+}
+
+.checkIcon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    color: #10b981;
+    margin-top: 2px;
+}
+
+.positioning {
+    margin-top: 16px;
+    font-style: italic;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        gap: 32px;
+    }
+
+    .highlightCard {
+        order: -1;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 40px 24px 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .price {
+        font-size: 2.5rem;
+    }
+}
