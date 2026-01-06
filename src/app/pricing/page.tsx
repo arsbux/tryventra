@@ -195,6 +195,11 @@ export default function PricingPage() {
                             <Link href="/" className={styles.footerNavLink}>Intent Signals</Link>
                             <Link href="/pricing" className={styles.footerNavLink}>Pricing</Link>
                         </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            <b style={{ color: '#000', fontSize: '0.9rem' }}>Contact</b>
+                            <a href="mailto:support@tryventra.com" className={styles.footerNavLink}>support@tryventra.com</a>
+                            <a href="mailto:keith@tryventra.com" className={styles.footerNavLink}>keith@tryventra.com</a>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.footerBottom}>

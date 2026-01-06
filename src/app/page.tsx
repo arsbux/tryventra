@@ -234,6 +234,11 @@ export default function LandingPage() {
                             <a href="#" className={styles.navLink}>Intent Signals</a>
                             <a href="#" className={styles.navLink}>Pricing</a>
                         </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            <b style={{ color: '#000' }}>Contact</b>
+                            <a href="mailto:support@tryventra.com" className={styles.navLink}>support@tryventra.com</a>
+                            <a href="mailto:keith@tryventra.com" className={styles.navLink}>keith@tryventra.com</a>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.footerBottom}>
