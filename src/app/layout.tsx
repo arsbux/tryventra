@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,6 +31,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <Script
+          src="https://data.flightlabs.agency/trackify.js"
+          data-site-id="tryventra-com-8lip7"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
