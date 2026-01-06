@@ -106,10 +106,17 @@
     .tableWrapper {
         margin: 0 20px;
         overflow-x: auto;
+        /* Allow horizontal scrolling while the children define the board size */
+    }
+
+    .stickyHeader,
+    .marqueeContainer {
+        min-width: 1000px;
     }
 
     .stickyHeader :global(table),
     .marqueeTrack :global(table) {
         min-width: 1000px;
+        width: 1000px;
     }
 }

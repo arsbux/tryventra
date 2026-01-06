@@ -44,9 +44,9 @@
     border-bottom: 1px solid #f7f7f7;
     color: #444;
     vertical-align: middle;
-    word-break: break-all;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .row:last-child .td {
@@ -60,6 +60,8 @@
 .companyCell {
     font-weight: 600;
     color: #111;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tableLink {
@@ -73,16 +75,16 @@
 }
 
 .contactCell {
-    max-width: 250px;
     color: #666;
     font-size: 0.75rem;
 }
 
 .insightCell {
-    max-width: 300px;
     color: #444;
     font-size: 0.8125rem;
     line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Contact Info Sub-styles */
@@ -203,14 +205,22 @@
 .actionButton:hover {
     background: #000;
 }
+
 @media (max-width: 768px) {
     .table {
-        min-width: 800px;
+        min-width: 1000px;
     }
 
-    .contactCell, .insightCell {
+    .contactCell,
+    .insightCell {
         max-width: none;
         word-break: normal;
         overflow: visible;
+        white-space: normal;
+    }
+
+    .td {
+        white-space: normal;
+        word-break: normal;
     }
 }
