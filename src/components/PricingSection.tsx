@@ -3,6 +3,7 @@
 import React from 'react';
 import styles from './PricingSection.module.css';
 import { supabase } from '@/lib/supabase';
+import { useToast } from './Toaster';
 
 const CheckIcon = () => (
     <svg className={styles.checkIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -11,6 +12,7 @@ const CheckIcon = () => (
 );
 
 export default function PricingSection() {
+    const { toast } = useToast();
     const [loadingTier, setLoadingTier] = React.useState<string | null>(null);
 
     const handleCheckout = async (tierName: string, productId: string) => {
@@ -42,7 +44,7 @@ export default function PricingSection() {
             }
         } catch (error) {
             console.error('Checkout error:', error);
-            alert('Something went wrong. Please try again or contact support.');
+            toast('Something went wrong. Please try again or contact support.', 'error');
         } finally {
             setLoadingTier(null);
         }

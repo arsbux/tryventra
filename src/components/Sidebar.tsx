@@ -5,23 +5,48 @@ import { usePathname } from "next/navigation";
 import styles from "@/app/desk/page.module.css";
 
 export const Icons = {
-    Signals: () => (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 7V5" /><path d="M12 19v-2" /><path d="m16.95 7.05 1.41-1.41" /><path d="m5.64 18.36 1.41-1.41" /><path d="M17 12h2" /><path d="M5 12H7" /><path d="m16.95 16.95 1.41 1.41" /><path d="m5.64 5.64 1.41 1.41" /></svg>
+    Validation: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg>
     ),
-    Scout: () => (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+    Rocket: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /><path d="M9 12H4s.5-1 1-4c2 1 3 1.5 4 2z" /><path d="M15 15v5c-1 0-2.5-.5-4-2 1.5-1 2-2 2-3z" /><path d="M15 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" /></svg>
     ),
-    Pipeline: () => (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
+    Forms: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+    ),
+    Mail: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+    ),
+    Users: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
     ),
     Logo: () => (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" /></svg>
+    ),
+    Play: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+    ),
+    Chart: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
     )
 };
 
 export function Sidebar({ activeTab, setActiveTab }: { activeTab?: string, setActiveTab?: (tab: any) => void }) {
     const pathname = usePathname();
     const isPostPage = pathname.startsWith('/post/');
+
+    const navGroups = [
+        {
+            label: "LAUNCH",
+            items: [
+                { id: "analytics", label: "Web Analytics", icon: <Icons.Chart /> },
+                { id: "forms", label: "Forms", icon: <Icons.Forms /> },
+                { id: "demos", label: "Video Demos", icon: <Icons.Play /> },
+                { id: "waitlists", label: "Email Lists", icon: <Icons.Rocket /> },
+                { id: "affiliates", label: "Partnerships", icon: <Icons.Users /> },
+            ]
+        }
+    ];
 
     return (
         <aside className={styles.sidebar}>
@@ -33,27 +58,25 @@ export function Sidebar({ activeTab, setActiveTab }: { activeTab?: string, setAc
             </Link>
 
             <nav className={styles.navSection}>
-                <Link
-                    href="/desk"
-                    className={`${styles.navItem} ${!isPostPage && activeTab === 'pipeline' ? styles.activeNavItem : ''}`}
-                    onClick={() => setActiveTab?.('pipeline')}
-                >
-                    <span className={styles.navIcon}><Icons.Pipeline /></span> Leads DB
-                </Link>
-                <Link
-                    href="/desk"
-                    className={`${styles.navItem} ${!isPostPage && activeTab === 'scout' ? styles.activeNavItem : ''}`}
-                    onClick={() => setActiveTab?.('scout')}
-                >
-                    <span className={styles.navIcon}><Icons.Scout /></span> Lead Scout
-                </Link>
-                <Link
-                    href="/desk"
-                    className={`${styles.navItem} ${!isPostPage && activeTab === 'signals' ? styles.activeNavItem : ''}`}
-                    onClick={() => setActiveTab?.('signals')}
-                >
-                    <span className={styles.navIcon}><Icons.Signals /></span> Intent Signals
-                </Link>
+                {navGroups.map((group) => (
+                    <div key={group.label} className={styles.navGroup}>
+                        <div className={styles.navGroupLabel}>{group.label}</div>
+                        {group.items.map((item) => {
+                            const href = `/desk/${item.id}`;
+                            const isActive = activeTab === item.id;
+
+                            return (
+                                <Link
+                                    key={item.id}
+                                    href={href}
+                                    className={`${styles.navItem} ${isActive ? styles.activeNavItem : ''}`}
+                                >
+                                    <span className={styles.navIcon}>{item.icon}</span> {item.label}
+                                </Link>
+                            );
+                        })}
+                    </div>
+                ))}
             </nav>
         </aside>
     );

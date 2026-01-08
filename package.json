@@ -12,10 +12,15 @@
     "@google/generative-ai": "^0.24.1",
     "@prisma/client": "^7.2.0",
     "@supabase/supabase-js": "^2.89.0",
+    "@xyflow/react": "^12.10.0",
     "dodopayments": "^2.13.1",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "rrweb": "^2.0.0-alpha.4",
+    "rrweb-player": "^1.0.0-alpha.4",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

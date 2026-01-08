@@ -101,7 +101,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps & { id: string }> = 
 
       <div className={styles.footer}>
         <Link
-          href={`/post/${encodeURIComponent(id)}?url=${encodeURIComponent(link)}&title=${encodeURIComponent(title)}&platform=${encodeURIComponent(platform)}`}
+          href={`/desk/analysis/${encodeURIComponent(id)}?url=${encodeURIComponent(link)}&title=${encodeURIComponent(title)}&platform=${encodeURIComponent(platform)}`}
           className={styles.button}
         >
           {actionLabel || 'Analyze'}

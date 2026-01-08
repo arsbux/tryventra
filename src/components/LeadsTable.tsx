@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import styles from './LeadsTable.module.css';
 import { useState } from 'react';
+import { useToast } from './Toaster';
 
 export interface Lead {
     id: string;
@@ -10,8 +11,8 @@ export interface Lead {
     contact: string;
     status: string;
     email: string;
-    phone: string;
-    socials: string;
+    phone?: string;
+    socials?: string;
     link: string;
     platform: string;
     insight?: string;
@@ -47,8 +48,7 @@ export function LeadsTable({
     hideHeader?: boolean,
     disableInteractions?: boolean
 }) {
-
-    const [showToast, setShowToast] = useState(false);
+    const { toast } = useToast();
 
     const handleChange = (id: string, field: keyof Lead, value: any) => {
         if (onUpdate) onUpdate(id, field as string, value);
@@ -74,8 +74,7 @@ export function LeadsTable({
     const copyToClipboard = async (text: string) => {
         try {
             await navigator.clipboard.writeText(text);
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 1500);
+            toast("Email copied to clipboard!", "success");
         } catch (err) {
             console.error('Failed to copy:', err);
         }
@@ -86,30 +85,6 @@ export function LeadsTable({
             className={styles.tableContainer}
             style={disableInteractions ? { pointerEvents: 'none', userSelect: 'none' } : {}}
         >
-            {showToast && (
-                <div style={{
-                    position: 'fixed',
-                    top: '20px',
-                    right: '20px',
-                    background: '#10b981',
-                    color: 'white',
-                    padding: '12px 24px',
-                    borderRadius: '8px',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                    zIndex: 9999,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    animation: 'slideIn 0.2s ease-out'
-                }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    Email copied to clipboard!
-                </div>
-            )}
             <table className={styles.table}>
                 {!hideHeader && (
                     <thead>
@@ -229,7 +204,7 @@ export function LeadsTable({
                                 <td className={styles.td}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                         <Link
-                                            href={`/post/${encodeURIComponent(lead.id)}?url=${encodeURIComponent(lead.link)}&title=${encodeURIComponent(lead.title)}&platform=${encodeURIComponent(lead.platform)}`}
+                                            href={`/desk/analysis/${encodeURIComponent(lead.id)}?url=${encodeURIComponent(lead.link)}&title=${encodeURIComponent(lead.title)}&platform=${encodeURIComponent(lead.platform)}`}
                                             className={styles.actionButton}
                                         >
                                             Analyze

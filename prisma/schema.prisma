@@ -25,3 +25,16 @@ model Lead {
 
   @@unique([companyName, website])
 }
+
+model VideoDemo {
+  id          String   @id @default(uuid())
+  founderId   String   @map("founder_id")
+  title       String
+  slug        String   @unique
+  videoUrl    String   @map("video_url")
+  videoPath   String   @map("video_path")
+  metadata    Json?    @default("[]")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("video_demos")
+}

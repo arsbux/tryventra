@@ -1,0 +1,172 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.section {
+    background: white;
+    border: 1px solid #eaeaea;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sectionTitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #171717;
+}
+
+.description {
+    color: #666;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.onelinerBox {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.onelinerText {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #334155;
+    flex: 1;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border-color: #d1d5db;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.badgeActive {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.badgeDraft {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.button {
+    padding: 10px 18px;
+    background: #171717;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background: #000;
+    transform: translateY(-1px);
+}
+
+.secondaryButton {
+    background: white;
+    color: #171717;
+    border: 1px solid #eaeaea;
+}
+
+.secondaryButton:hover {
+    background: #f9fafb;
+}
+
+.iconButton {
+    padding: 8px;
+    background: transparent;
+    color: #64748b;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.iconButton:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+}

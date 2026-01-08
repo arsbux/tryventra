@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { ToastProvider } from "@/components/Toaster";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
         <Script
           src="https://data.flightlabs.agency/trackify.js"
           data-site-id="tryventra-com-8lip7"
