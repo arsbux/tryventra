@@ -21,36 +21,42 @@ export default function PrivacyPage() {
             <div className={styles.legalContainer}>
                 <div className={styles.legalHeader}>
                     <h1 className={styles.title}>Privacy Policy</h1>
-                    <p className={styles.lastUpdated}>Last updated: January 6, 2026</p>
+                    <p className={styles.lastUpdated}>Last updated: January 10, 2026</p>
                 </div>
 
                 <div className={styles.content}>
-                    <h2>1. Information We Collect</h2>
-                    <p>We collect information you provide directly to us when creating an account, such as your name and email address. We also collect usage data when you interact with our platform.</p>
+                    <h2>1. Data We Collect</h2>
+                    <p>We generally collect two types of data: Personal Data (such as name, email) that you provide to us, and Usage Data (such as log files, device information) automatically collected when you interact with our platform to improve service performance.</p>
 
-                    <h2>2. How We Use Information</h2>
-                    <p>We use your information to:</p>
+                    <h2>2. How We Use Data</h2>
+                    <p>Ventra AI uses your data to:</p>
                     <ul>
-                        <li>Provide, maintain, and improve our services.</li>
-                        <li>Process transactions and send related information.</li>
-                        <li>Send technical notices, updates, and security alerts.</li>
-                        <li>Respond to your comments and questions.</li>
+                        <li>Deliver, maintain, and optimize our products and services.</li>
+                        <li>Process payments and manage subscriptions.</li>
+                        <li>Communicate with you regarding updates, security alerts, and support.</li>
+                        <li>Analyze usage trends to enhance user experience.</li>
                     </ul>
 
-                    <h2>3. Data Handling for Leads</h2>
-                    <p>Ventra AI aggregates publicly available business information to identify leads. We do not store private, non-business related personal data. Users are responsible for ensuring their use of lead data complies with their local jurisdiction's privacy laws.</p>
+                    <h2>3. Data Sharing and Disclosure</h2>
+                    <p>We do not sell your personal data. We may share data with trusted third-party service providers (e.g., payment processors, hosting services) who assist us in operating our Services, subject to confidentiality obligations. We may also disclose data if required by law.</p>
 
-                    <h2>4. Data Security</h2>
-                    <p>We take reasonable measures to protect your personal information from loss, theft, misuse, and unauthorized access. However, no internet transmission is ever 100% secure.</p>
+                    <h2>4. Data Retention</h2>
+                    <p>We retain your personal data only as long as necessary to provide the Services and fulfill the purposes outlined in this policy, or as required by law. Upon account termination, we may retain certain data for legitimate business purposes or legal compliance.</p>
 
-                    <h2>5. Third-Party Services</h2>
-                    <p>Our service may contain links to other websites. We are not responsible for the privacy practices of third-party sites. We use third-party processors for payments (e.g., Stripe).</p>
+                    <h2>5. Security</h2>
+                    <p>We employ industry-standard organizational and technical measures to protect your data against unauthorized access, alteration, disclosure, or destruction. While we strive to protect your data, no transmission over the internet is completely secure.</p>
 
-                    <h2>6. Your Choices</h2>
-                    <p>You may update your account information at any time by logging into your account settings. You can also request the deletion of your account and personal data by contacting support.</p>
+                    <h2>6. User Rights</h2>
+                    <p>You have the right to access, correct, or delete your personal data. You may do so directly through your account settings or by contacting our support team if you require assistance.</p>
 
-                    <h2>7. Cookies</h2>
-                    <p>We use cookies to maintain your session and remember your preferences. You can disable cookies in your browser settings, but some features of the service may not function correctly.</p>
+                    <h2>7. Cookies and Tracking</h2>
+                    <p>We use cookies and similar technologies to track activity on our Services and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
+
+                    <h2>8. Changes to This Policy</h2>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+                    <h2>9. Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy, please contact us at support@tryventra.com.</p>
                 </div>
             </div>
 
@@ -71,6 +77,11 @@ export default function PrivacyPage() {
                             <Link href="/" className={styles.footerNavLink}>Lead Scout</Link>
                             <Link href="/" className={styles.footerNavLink}>Intent Signals</Link>
                             <Link href="/pricing" className={styles.footerNavLink}>Pricing</Link>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            <b style={{ color: '#000', fontSize: '0.9rem' }}>Contact</b>
+                            <a href="mailto:support@tryventra.com" className={styles.footerNavLink}>support@tryventra.com</a>
+                            <a href="mailto:keith@tryventra.com" className={styles.footerNavLink}>keith@tryventra.com</a>
                         </div>
                     </div>
                 </div>

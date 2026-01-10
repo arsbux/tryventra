@@ -78,6 +78,8 @@ export default function PricingSection() {
                             <div className={styles.featureItem}><CheckIcon /> Multi-Index Crawlability</div>
                             <div className={styles.featureItem}><CheckIcon /> AI Asset Generator</div>
                             <div className={styles.featureItem}><CheckIcon /> Access to Market Radar</div>
+                            <div className={styles.featureItem}><CheckIcon /> Web analytics</div>
+                            <div className={styles.featureItem}><CheckIcon /> AEO optimizer</div>
                         </div>
 
                         <button

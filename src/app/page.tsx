@@ -419,6 +419,10 @@ export default function LandingPage() {
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '32px' }}>
                         © {new Date().getFullYear()} Ventra AI. Pioneering the future of Answer Engine Optimization.
                     </p>
+                    <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', marginBottom: '24px' }}>
+                        <a href="mailto:support@tryventra.com" className={styles.navLink}>support@tryventra.com</a>
+                        <a href="mailto:keith@tryventra.com" className={styles.navLink}>keith@tryventra.com</a>
+                    </div>
                     <div style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}>
                         <Link href="/privacy" className={styles.navLink}>Privacy</Link>
                         <Link href="/terms" className={styles.navLink}>Terms</Link>

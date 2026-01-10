@@ -21,40 +21,50 @@ export default function TermsPage() {
             <div className={styles.legalContainer}>
                 <div className={styles.legalHeader}>
                     <h1 className={styles.title}>Terms of Service</h1>
-                    <p className={styles.lastUpdated}>Last updated: January 6, 2026</p>
+                    <p className={styles.lastUpdated}>Last updated: January 10, 2026</p>
                 </div>
 
                 <div className={styles.content}>
                     <h2>1. Acceptance of Terms</h2>
-                    <p>By accessing or using Ventra AI ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service.</p>
+                    <p>By registering for, accessing, or using the Ventra AI platform and services ("Services"), you agree to be bound by these Terms of Service ("Terms"). If you differ with these Terms, you must not use our Services. These Terms constitute a binding legal agreement between you and Ventra AI.</p>
 
-                    <h2>2. Description of Service</h2>
-                    <p>Ventra AI provides an AI-powered lead generation and intent signal monitoring platform. We provide tools to identify potential business opportunities and contact information for decision-makers.</p>
+                    <h2>2. Services Description</h2>
+                    <p>Ventra AI provides Answer Engine Optimization (AEO) tools, market intelligence, and analytics software tailored for AI search visibility. We grant you a limited, non-exclusive, non-transferable license to use our Services for your internal business purposes, subject to these Terms.</p>
 
-                    <h2>3. Use of Data</h2>
-                    <p>You agree to use the data provided by Ventra AI in compliance with all applicable laws, including but not limited to GDPR, CAN-SPAM Act, and local privacy regulations. You are solely responsible for your communication with any leads identified through the platform.</p>
+                    <h2>3. Account Registration</h2>
+                    <p>To use our Services, you must register for an account. You agree to provide accurate, current, and complete information during registration and to update such information to keep it accurate. You are responsible for safeguarding your account credentials and for all activities that occur under your account.</p>
 
-                    <h2>4. Subscription and Payments</h2>
+                    <h2>4. Subscription and Billing</h2>
                     <ul>
-                        <li>Starter Tier is a one-time purchase as described during checkout.</li>
-                        <li>Growth and Agency tiers are recurring monthly subscriptions.</li>
-                        <li>All sales are final unless otherwise required by law.</li>
-                        <li>Pricing is subject to change, but existing subscribers will be notified in advance.</li>
+                        <li><strong>Subscription Terms:</strong> Services are offered on a subscription basis. You agree to pay the fees applicable to your selected plan.</li>
+                        <li><strong>Billing Cycle:</strong> Subscriptions renew automatically at the end of each billing period unless canceled.</li>
+                        <li><strong>Cancellation:</strong> You may cancel your subscription at any time through your account settings. Access will continue until the end of the current billing cycle.</li>
+                        <li><strong>Refunds:</strong> Payments are generally non-refundable unless required by applicable law or specifically stated otherwise.</li>
                     </ul>
 
-                    <h2>5. Restrictions</h2>
-                    <p>You may not:</p>
+                    <h2>5. Acceptable Use and Restrictions</h2>
+                    <p>You agree not to:</p>
                     <ul>
-                        <li>Resell or redistribute the data provided by Ventra.</li>
-                        <li>Use automated systems to scrape our platform.</li>
-                        <li>Attempt to reverse engineer any of our AI models.</li>
+                        <li>Use the Services for any illegal or unauthorized purpose.</li>
+                        <li>Reverse engineer, decompile, or attempt to extract the source code of the software.</li>
+                        <li>Use automated systems (bots, scrapers) to access the Services without permission.</li>
+                        <li>Resell, sublicense, or redistribute the Services without our express written consent.</li>
                     </ul>
 
-                    <h2>6. Termination</h2>
-                    <p>We reserve the right to suspend or terminate accounts that violate these terms or engage in abusive behavior toward our systems or staff.</p>
+                    <h2>6. Intellectual Property</h2>
+                    <p>Ventra AI retains all rights, title, and interest in and to the Services, including all related intellectual property rights. Your use of the Services does not grant you any ownership rights.</p>
 
-                    <h2>7. Limitation of Liability</h2>
-                    <p>Ventra AI is provided "as is". We are not liable for any business decisions made, or deals lost or won, based on the information provided by our platform.</p>
+                    <h2>7. Data and Analytics</h2>
+                    <p>We may collect and analyze data relating to the provision, use, and performance of the Services. You grant us the right to use such data to improve and enhance the Services and for other development, diagnostic, and corrective purposes.</p>
+
+                    <h2>8. Limitation of Liability</h2>
+                    <p>To the maximum extent permitted by law, Ventra AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill, arising out of or related to your use of the Services.</p>
+
+                    <h2>9. Modifications to Terms</h2>
+                    <p>We may update these Terms from time to time. We will notify you of material changes by posting the new Terms on this page. Your continued use of the Services after such changes constitutes your acceptance of the new Terms.</p>
+
+                    <h2>10. Contact Us</h2>
+                    <p>If you have any questions about these Terms, please contact us at support@tryventra.com.</p>
                 </div>
             </div>
 
@@ -75,6 +85,11 @@ export default function TermsPage() {
                             <Link href="/" className={styles.footerNavLink}>Lead Scout</Link>
                             <Link href="/" className={styles.footerNavLink}>Intent Signals</Link>
                             <Link href="/pricing" className={styles.footerNavLink}>Pricing</Link>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            <b style={{ color: '#000', fontSize: '0.9rem' }}>Contact</b>
+                            <a href="mailto:support@tryventra.com" className={styles.footerNavLink}>support@tryventra.com</a>
+                            <a href="mailto:keith@tryventra.com" className={styles.footerNavLink}>keith@tryventra.com</a>
                         </div>
                     </div>
                 </div>
