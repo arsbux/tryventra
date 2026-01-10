@@ -90,8 +90,8 @@ export default function LandingPage() {
                     </div>
 
                     <h1 className={styles.heroTitle}>
-                        The Search Platform<br />
-                        For The AI Era
+                        Get more attention by appearing<br />
+                        in AI responses globally
                     </h1>
 
                     <p className={styles.heroSubtitle}>
