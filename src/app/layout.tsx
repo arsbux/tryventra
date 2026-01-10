@@ -14,15 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ventra | AI-Powered Lead Generation",
-  description: "Find high-intent leads and automate your outreach with Ventra's AI-driven intelligence.",
+  title: "Ventra | AI Answer Engine Optimization (AEO) Platform",
+  description: "The world's first AEO platform. Optimize your brand for ChatGPT, Perplexity, Gemini, and Claude. Fix what's stopping your site from being the answer.",
   icons: {
-    icon: "/images/logo.png",
-    apple: "/images/logo.png",
+    icon: "/images/favicon.png",
+    apple: "/images/logo.svg",
   },
 };
 
 import { ToastProvider } from "@/components/Toaster";
+
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -32,9 +34,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ToastProvider>
-          {children}
-        </ToastProvider>
+        <ThemeProvider>
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </ThemeProvider>
         <Script
           src="https://data.flightlabs.agency/trackify.js"
           data-site-id="tryventra-com-8lip7"

@@ -11,9 +11,9 @@ export default function DeskLayout({ children }: { children: React.ReactNode }) 
     const router = useRouter();
     const [userId, setUserId] = useState<string | null>(null);
 
-    // Determine active tab from pathname
-    const segments = pathname.split('/');
-    const activeTab = segments[2] || 'forms';
+    // Determine active tab from pathname (e.g. /desk/aeo/dashboard -> aeo/dashboard)
+    const segments = pathname.split('/').filter(Boolean);
+    const activeTab = segments.length > 2 ? segments.slice(1).join('/') : segments[1] || 'dashboard';
 
     useEffect(() => {
         const checkUser = async () => {

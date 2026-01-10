@@ -7,7 +7,7 @@ export default function DeskIndex() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/desk/forms");
+    router.replace("/desk/aeo/market-radar");
   }, [router]);
 
   return (

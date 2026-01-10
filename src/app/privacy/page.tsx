@@ -9,7 +9,7 @@ export default function PrivacyPage() {
         <main className={styles.legalPage}>
             <nav className={styles.nav}>
                 <Link href="/" className={styles.logoArea}>
-                    <img src="/images/logo.png" alt="Ventra Logo" width="32" height="32" style={{ objectFit: 'contain' }} />
+                    <img src="/images/logo.svg" alt="Ventra Logo" width="32" height="32" style={{ objectFit: 'contain' }} />
                     <span className={styles.logoText}>Ventra</span>
                 </Link>
                 <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
                 <div className={styles.footerTop}>
                     <div>
                         <div className={styles.footerLogo}>
-                            <img src="/images/logo.png" alt="Ventra Logo" width="32" height="32" />
+                            <img src="/images/logo.svg" alt="Ventra Logo" width="32" height="32" />
                             Ventra
                         </div>
                         <p style={{ marginTop: '16px', color: '#666', maxWidth: '300px', fontSize: '0.9rem' }}>

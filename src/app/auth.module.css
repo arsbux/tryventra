@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #fafafa;
+    background-color: #050505;
     padding: 20px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -11,11 +11,11 @@
 .authCard {
     width: 100%;
     max-width: 400px;
-    background: white;
+    background: #0a0a0a;
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
 }
 
 .logoArea {
@@ -29,21 +29,21 @@
 .logoText {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #111;
+    color: #fff;
     letter-spacing: -0.02em;
 }
 
 .title {
     font-size: 1.5rem;
-    font-weight: 600;
-    color: #111;
+    font-weight: 700;
+    color: #fff;
     margin-bottom: 8px;
     text-align: center;
 }
 
 .subtitle {
-    font-size: 0.875rem;
-    color: #666;
+    font-size: 0.9rem;
+    color: #888;
     margin-bottom: 32px;
     text-align: center;
     line-height: 1.5;
@@ -64,7 +64,7 @@
 .label {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #444;
+    color: #999;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -72,35 +72,36 @@
 .input {
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 0.875rem;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #fff;
     outline: none;
     transition: all 0.2s;
-    background: #fdfdfd;
 }
 
 .input:focus {
-    border-color: #111;
-    background: white;
+    border-color: #00eba8;
+    background: #151515;
 }
 
 .authButton {
     width: 100%;
     padding: 12px;
-    background: #111;
-    color: white;
+    background: #00eba8;
+    color: #000;
     border: none;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 750;
     cursor: pointer;
     transition: all 0.2s;
     margin-top: 10px;
 }
 
 .authButton:hover {
-    background: #000;
+    background: #00d496;
 }
 
 .authButton:disabled {
@@ -109,9 +110,13 @@
 }
 
 .errorMessage {
-    color: #dc2626;
+    color: #ef4444;
     font-size: 0.8125rem;
     text-align: center;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .footer {
@@ -124,13 +129,15 @@
 .toggleButton {
     background: none;
     border: none;
-    color: #111;
+    color: #fff;
     font-weight: 600;
     cursor: pointer;
     margin-left: 8px;
     padding: 0;
+    transition: opacity 0.2s;
 }
 
 .toggleButton:hover {
+    opacity: 0.8;
     text-decoration: underline;
 }

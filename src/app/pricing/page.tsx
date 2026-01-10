@@ -2,59 +2,63 @@
 
 import React from 'react';
 import Link from 'next/link';
-import styles from './pricing.module.css';
+import styles from '../landing.module.css';
 import PricingSection from '@/components/PricingSection';
 
 export default function PricingPage() {
     return (
-        <main className={styles.page}>
-            <nav className={styles.nav}>
-                <Link href="/" className={styles.logoArea} style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-                    <img src="/images/logo.png" alt="Ventra Logo" width="32" height="32" style={{ objectFit: 'contain' }} />
-                    <span className={styles.logoText}>Ventra</span>
-                </Link>
-                <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-                    <Link href="/pricing" style={{ fontSize: '0.925rem', fontWeight: 500, color: '#666', textDecoration: 'none' }}>Pricing</Link>
-                    <Link href="/login" className={styles.ctaSecondary} style={{ padding: '8px 20px', borderRadius: '40px', fontSize: '0.875rem' }}>Open App</Link>
-                </div>
-            </nav>
+        <div className={styles.page}>
+            {/* Global Styles for correct font/background */}
+            <style jsx global>{`
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+                
+                body {
+                  margin: 0;
+                  background: #050505;
+                }
+            `}</style>
 
-            <PricingSection />
+            {/* Navigation */}
+            <div className={styles.navWrapper}>
+                <nav className={styles.nav}>
+                    <Link href="/" className={styles.logoArea}>
+                        <img src="/images/logo.svg" alt="Ventra" width="24" height="24" />
+                        <span className={styles.logoText}>Ventra</span>
+                    </Link>
+
+                    <div className={styles.navLinks}>
+                        <Link href="/#platform" className={styles.navLink}>AEO Platform</Link>
+                        <Link href="/#market-radar" className={styles.navLink}>Market Radar</Link>
+                        <Link href="/pricing" className={styles.navLink}>Pricing</Link>
+                        <Link href="/#intelligence" className={styles.navLink}>Intelligence</Link>
+                    </div>
+
+                    <Link href="/login" className={styles.bookBtn}>
+                        Get Started
+                    </Link>
+                </nav>
+            </div>
+
+            <div style={{ paddingTop: '80px' }}>
+                <PricingSection />
+            </div>
 
             {/* Footer */}
-            <footer className={styles.footer}>
-                <div className={styles.footerTop}>
-                    <div>
-                        <div className={styles.footerLogo}>
-                            <img src="/images/logo.png" alt="Ventra Logo" width="32" height="32" />
-                            Ventra
-                        </div>
-                        <p style={{ marginTop: '16px', color: '#666', maxWidth: '300px', fontSize: '0.9rem' }}>
-                            Instantly scale your outreach and find your next best client with AI-powered lead intelligence.
-                        </p>
+            <footer style={{ padding: '80px 0', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+                <div className={styles.container}>
+                    <div className={styles.logoArea} style={{ justifyContent: 'center', marginBottom: '24px' }}>
+                        <img src="/images/logo.svg" alt="Ventra" width="24" height="24" />
+                        <span className={styles.logoText}>Ventra</span>
                     </div>
-                    <div className={styles.footerLinks}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <b style={{ color: '#000', fontSize: '0.9rem' }}>Product</b>
-                            <Link href="/" className={styles.footerNavLink}>Lead Scout</Link>
-                            <Link href="/" className={styles.footerNavLink}>Intent Signals</Link>
-                            <Link href="/pricing" className={styles.footerNavLink}>Pricing</Link>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <b style={{ color: '#000', fontSize: '0.9rem' }}>Contact</b>
-                            <a href="mailto:support@tryventra.com" className={styles.footerNavLink}>support@tryventra.com</a>
-                            <a href="mailto:keith@tryventra.com" className={styles.footerNavLink}>keith@tryventra.com</a>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.footerBottom}>
-                    <p>© 2026 Ventra AI. All rights reserved.</p>
-                    <div style={{ display: 'flex', gap: '24px' }}>
-                        <Link href="/privacy" className={styles.footerNavLink}>Privacy Policy</Link>
-                        <Link href="/terms" className={styles.footerNavLink}>Terms of Service</Link>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '32px' }}>
+                        © {new Date().getFullYear()} Ventra AI. Pioneering the future of Answer Engine Optimization.
+                    </p>
+                    <div style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}>
+                        <Link href="/privacy" className={styles.navLink}>Privacy</Link>
+                        <Link href="/terms" className={styles.navLink}>Terms</Link>
                     </div>
                 </div>
             </footer>
-        </main>
+        </div>
     );
 }

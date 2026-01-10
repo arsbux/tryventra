@@ -21,7 +21,7 @@ export async function POST(request: Request) {
             metadata: {
                 user_id: userId,
             },
-            return_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/desk`,
+            return_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/payment-success`,
         });
 
         return NextResponse.json({ url: session.checkout_url });

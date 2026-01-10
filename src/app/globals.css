@@ -1,8 +1,41 @@
 :root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+[data-theme='light'] {
   --background: #ffffff;
   --foreground: #171717;
+  --surface: #f8f9fa;
   --border: #eaeaea;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --primary: #00eba8;
+  /* Keep green as brand color */
+  --accent: #00eba8;
+  --text-muted: #64748b;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] {
+  --background: #050505;
+  --foreground: #ffffff;
+  --surface: #0c0c0c;
+  --border: #1a1a1a;
+  --primary: #00eba8;
+  --accent: #00eba8;
+  --text-muted: #a1a1aa;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Default to dark as requested */
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+  --surface: #0c0c0c;
+  --border: #1a1a1a;
+  --primary: #00eba8;
+  --accent: #00eba8;
+  --text-muted: #a1a1aa;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -58,9 +91,17 @@ input {
 .animate-fade-in {
   animation: fadeIn 0.4s ease-out forwards;
 }
+
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .animate-slide-in {

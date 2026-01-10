@@ -28,6 +28,18 @@ export const Icons = {
     ),
     Chart: () => (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
+    ),
+    Search: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+    ),
+    CheckCircle: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+    ),
+    Edit: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+    ),
+    Home: () => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
     )
 };
 
@@ -37,6 +49,22 @@ export function Sidebar({ activeTab, setActiveTab }: { activeTab?: string, setAc
 
     const navGroups = [
         {
+            label: "INTELLIGENCE",
+            items: [
+                { id: "aeo/market-radar", label: "Market Radar", icon: <Icons.Logo /> },
+                { id: "analytics", label: "Visitor Intelligence", icon: <Icons.Chart /> },
+            ]
+        },
+        {
+            label: "AEO PLATFORM",
+            items: [
+                { id: "aeo/dashboard", label: "Dashboard", icon: <Icons.Home /> },
+                { id: "aeo/analysis", label: "Analysis & Audit", icon: <Icons.Search /> },
+                { id: "aeo/optimize", label: "Optimizer", icon: <Icons.Edit /> },
+            ]
+        },
+        // OLD FEATURES - Commented out but backend still works
+        /* {
             label: "LAUNCH",
             items: [
                 { id: "analytics", label: "Web Analytics", icon: <Icons.Chart /> },
@@ -45,14 +73,14 @@ export function Sidebar({ activeTab, setActiveTab }: { activeTab?: string, setAc
                 { id: "waitlists", label: "Email Lists", icon: <Icons.Rocket /> },
                 { id: "affiliates", label: "Partnerships", icon: <Icons.Users /> },
             ]
-        }
+        } */
     ];
 
     return (
         <aside className={styles.sidebar}>
             <Link href="/desk" className={styles.logoArea} style={{ width: '100%', textDecoration: 'none' }}>
                 <div className={styles.navIcon}>
-                    <img src="/images/logo.png" alt="Ventra Logo" width="20" height="20" style={{ objectFit: 'contain' }} />
+                    <img src="/images/logo.svg" alt="Ventra Logo" width="20" height="20" style={{ objectFit: 'contain' }} />
                 </div>
                 <span className={styles.logoText}>Ventra</span>
             </Link>

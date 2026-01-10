@@ -81,7 +81,7 @@ export default function SharedViewPage({ params }: { params: Promise<{ id: strin
                         <p style={{ color: '#666', marginTop: '4px' }}>Found {leads.length} leads</p>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#111', fontWeight: 700 }}>
-                        <img src="/images/logo.png" alt="Ventra Logo" width="24" height="24" style={{ objectFit: 'contain' }} />
+                        <img src="/images/logo.svg" alt="Ventra Logo" width="24" height="24" style={{ objectFit: 'contain' }} />
                         Ventra
                     </div>
                 </div>

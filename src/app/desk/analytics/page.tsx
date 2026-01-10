@@ -17,14 +17,17 @@ import {
     Smartphone,
     Tablet,
     ExternalLink,
-    Code
+    Code,
+    Zap
 } from 'lucide-react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function AnalyticsDashboard() {
     const [loading, setLoading] = useState(true);
     const [founderId, setFounderId] = useState<string | null>(null);
     const [showTag, setShowTag] = useState(false);
     const [events, setEvents] = useState<any[]>([]);
+    const [chartData, setChartData] = useState<any[]>([]);
 
     // Stats State
     const [stats, setStats] = useState({
@@ -57,11 +60,38 @@ export default function AnalyticsDashboard() {
             if (error) throw error;
             setEvents(data || []);
             processStats(data || []);
+            processChartData(data || []);
         } catch (err) {
             console.error("Error fetching real analytics:", err);
         } finally {
             setLoading(false);
         }
+    };
+
+    const processChartData = (allEvents: any[]) => {
+        // Group by hour for the last 24 hours
+        const last24h = Array.from({ length: 24 }, (_, i) => {
+            const d = new Date();
+            d.setHours(d.getHours() - i);
+            d.setMinutes(0, 0, 0);
+            return {
+                timestamp: d.toISOString(),
+                label: d.getHours() + ":00",
+                value: 0
+            };
+        }).reverse();
+
+        allEvents.forEach(e => {
+            const eDate = new Date(e.created_at);
+            const eHourST = new Date(eDate);
+            eHourST.setMinutes(0, 0, 0);
+            eHourST.setSeconds(0, 0);
+            const iso = eHourST.toISOString();
+            const point = last24h.find(p => p.timestamp === iso);
+            if (point) point.value++;
+        });
+
+        setChartData(last24h);
     };
 
     const processStats = (allEvents: any[]) => {
@@ -83,7 +113,7 @@ export default function AnalyticsDashboard() {
 
         const sessionList = Object.values(sessions) as any[][];
         const bouncedSessions = sessionList.filter(s => s.length === 1).length;
-        const bRate = ((bouncedSessions / sessionList.length) * 100).toFixed(1) + "%";
+        const bRate = ((bouncedSessions / (sessionList.length || 1)) * 100).toFixed(1) + "%";
 
         let totalDuration = 0;
         sessionList.forEach(s => {
@@ -135,33 +165,39 @@ export default function AnalyticsDashboard() {
   data-id="${founderId || 'YOUR_ID'}"
 ></script>`;
 
-    if (loading) return <div className={styles.centered}><div className={styles.spinner}></div></div>;
+    if (loading) return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '80vh' }}>
+            <div style={{ width: '40px', height: '40px', border: '3px solid rgba(0, 235, 168, 0.1)', borderTop: '3px solid var(--primary)', borderRadius: '50%', animation: 'spin 1.1s linear infinite' }}></div>
+            <p style={{ marginTop: '20px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Initializing Visitor Intelligence...</p>
+            <style jsx>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+        </div>
+    );
 
     if (events.length === 0) {
         return (
             <div className={analyticsStyles.container}>
                 <div className={styles.topHeader}>
                     <div>
-                        <h1 className={styles.title}>Web Analytics</h1>
-                        <p className={styles.subtitle}>No data detected yet.</p>
+                        <h1 className={styles.title}>Visitor Intelligence</h1>
+                        <p className={styles.subtitle}>No visitor signals detected yet.</p>
                     </div>
                 </div>
-                <div style={{ textAlign: 'center', padding: '100px 40px', background: 'white', borderRadius: '32px', border: '1px dashed #ddd' }}>
+                <div style={{ textAlign: 'center', padding: '100px 40px', background: 'var(--surface)', borderRadius: '32px', border: '1px dashed var(--border)' }}>
                     <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}>
-                        <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: '#f5f3ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6366f1' }}>
+                        <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'rgba(0, 235, 168, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', border: '1px solid rgba(0, 235, 168, 0.2)' }}>
                             <Code size={32} />
                         </div>
                     </div>
-                    <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '12px' }}>Start Tracking Your Website</h2>
-                    <p style={{ color: '#666', maxWidth: '400px', margin: '0 auto 32px' }}>
-                        You haven't added the tracking tag to your site yet, or we're still waiting for your first visitor. Paste the code below to start.
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '12px' }}>Enable Real-time Tracking</h2>
+                    <p style={{ color: 'var(--text-muted)', maxWidth: '400px', margin: '0 auto 32px' }}>
+                        Paste the snippet below into your website's <code>&lt;head&gt;</code> to start scouting visitor intent in real-time.
                     </p>
                     <div className={analyticsStyles.tagBox} style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'left' }}>
                         <div className={analyticsStyles.tagHeader}>
-                            <h4>Tracking Tag</h4>
+                            <h4 style={{ color: 'var(--foreground)' }}>Tracking Snippet</h4>
                             <button onClick={() => {
                                 navigator.clipboard.writeText(trackingTag);
-                                alert("Copied!");
+                                alert("Snippet copied to clipboard!");
                             }}>Copy</button>
                         </div>
                         <pre className={analyticsStyles.codeBlock}><code>{trackingTag}</code></pre>
@@ -175,29 +211,29 @@ export default function AnalyticsDashboard() {
         <div className={analyticsStyles.container}>
             <div className={styles.topHeader}>
                 <div>
-                    <h1 className={styles.title}>Web Analytics</h1>
-                    <p className={styles.subtitle}>Live tracking for your decentralized websites</p>
+                    <h1 className={styles.title}>Visitor Intelligence</h1>
+                    <p className={styles.subtitle}>Deep-scan tracking for your digital infrastructure</p>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
                     <button
                         className={styles.secondaryButton}
-                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 16px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '12px', border: '1px solid var(--border)', background: 'var(--surface)', fontSize: '0.85rem', fontWeight: 600 }}
                         onClick={() => setShowTag(!showTag)}
                     >
-                        <Code size={18} />
-                        Code Tag
+                        <Code size={16} />
+                        Tracking Tag
                     </button>
-                    <div className={styles.button} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 16px' }}>
-                        <Calendar size={18} />
-                        Real-time Data
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '12px', background: 'rgba(0, 235, 168, 0.1)', color: 'var(--primary)', fontSize: '0.85rem', fontWeight: 700, border: '1px solid rgba(0, 235, 168, 0.2)' }}>
+                        <Zap size={16} fill="var(--primary)" />
+                        Real-time Scout
                     </div>
                 </div>
             </div>
 
             {showTag && (
-                <div className={analyticsStyles.tagBox}>
+                <div className={analyticsStyles.tagBox} style={{ animation: 'fadeIn 0.3s ease-out' }}>
                     <div className={analyticsStyles.tagHeader}>
-                        <h4>Tracking Tag</h4>
+                        <h4 style={{ color: 'var(--foreground)' }}>Deployment Snippet</h4>
                         <button onClick={() => {
                             navigator.clipboard.writeText(trackingTag);
                             alert("Copied!");
@@ -214,73 +250,104 @@ export default function AnalyticsDashboard() {
                 <div className={analyticsStyles.statCard}>
                     <div className={analyticsStyles.statLabel}>
                         <Users size={16} />
-                        <span>Visitors</span>
+                        <span>Unique Visitors</span>
                     </div>
                     <div className={analyticsStyles.statValue}>{stats.totalVisitors.toLocaleString()}</div>
-                    <div className={analyticsStyles.statTrend}>
-                        <span>Total unique visitors</span>
+                    <div className={analyticsStyles.statTrend} style={{ color: 'var(--primary)' }}>
+                        <span>Total scouts identities</span>
                     </div>
                 </div>
                 <div className={analyticsStyles.statCard}>
                     <div className={analyticsStyles.statLabel}>
                         <MousePointer2 size={16} />
-                        <span>Bounce Rate</span>
+                        <span>Engagement Rank</span>
                     </div>
                     <div className={analyticsStyles.statValue}>{stats.bounceRate}</div>
-                    <div className={analyticsStyles.statTrend}>
-                        <span>Single-page sessions</span>
+                    <div className={analyticsStyles.statTrend} style={{ color: '#ef4444' }}>
+                        <span>Clickthrough dropoff</span>
                     </div>
                 </div>
                 <div className={analyticsStyles.statCard}>
                     <div className={analyticsStyles.statLabel}>
                         <Clock size={16} />
-                        <span>Avg. Session</span>
+                        <span>Session Depth</span>
                     </div>
                     <div className={analyticsStyles.statValue}>{stats.avgSession}</div>
-                    <div className={analyticsStyles.statTrend}>
-                        <span>Time per visit</span>
+                    <div className={analyticsStyles.statTrend} style={{ color: 'var(--primary)' }}>
+                        <span>Avg attention span</span>
                     </div>
                 </div>
                 <div className={analyticsStyles.statCard}>
                     <div className={analyticsStyles.statLabel}>
                         <div className={analyticsStyles.pulseIndicator}></div>
-                        <span>Active Now</span>
+                        <span>Active Intel</span>
                     </div>
                     <div className={analyticsStyles.statValue}>{stats.activeNow}</div>
-                    <div className={analyticsStyles.statTrend}>
-                        <span>Last 5 minutes</span>
+                    <div className={analyticsStyles.statTrend} style={{ color: 'var(--primary)' }}>
+                        <span>Live signals detected</span>
                     </div>
                 </div>
             </div>
 
-            {/* Simple Visual Chart */}
+            {/* Recharts Analytics */}
             <div className={analyticsStyles.chartSection}>
                 <div className={analyticsStyles.chartHeader}>
-                    <h4>Traffic Velocity</h4>
+                    <h4>Traffic Intelligence Velocity</h4>
+                    <div style={{ display: 'flex', gap: '8px', fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 800 }}>
+                        <span style={{ color: 'var(--primary)' }}>●</span> Event Frequency (24H)
+                    </div>
                 </div>
-                <div className={analyticsStyles.chartPlaceholder}>
-                    <svg viewBox="0 0 1000 300" className={analyticsStyles.svgChart}>
-                        <path
-                            d="M0 280 Q 200 270, 400 250 T 700 180 T 1000 220"
-                            fill="none"
-                            stroke="#6366f1"
-                            strokeWidth="3"
-                        />
-                    </svg>
+                <div style={{ height: '300px' }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={chartData}>
+                            <defs>
+                                <linearGradient id="colorVis" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.3} />
+                                    <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
+                                </linearGradient>
+                            </defs>
+                            <XAxis
+                                dataKey="label"
+                                axisLine={false}
+                                tickLine={false}
+                                tick={{ fontSize: 10, fill: 'var(--text-muted)' }}
+                                minTickGap={30}
+                            />
+                            <YAxis
+                                axisLine={false}
+                                tickLine={false}
+                                tick={{ fontSize: 10, fill: 'var(--text-muted)' }}
+                            />
+                            <Tooltip
+                                contentStyle={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '12px', fontSize: '0.8rem' }}
+                                itemStyle={{ color: 'var(--primary)', fontWeight: 700 }}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="value"
+                                stroke="var(--primary)"
+                                strokeWidth={3}
+                                fillOpacity={1}
+                                fill="url(#colorVis)"
+                            />
+                        </AreaChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
 
             {/* Detailed Breakdowns */}
             <div className={analyticsStyles.detailsGrid}>
                 <div className={analyticsStyles.detailCard}>
-                    <h5>Top Referrers</h5>
+                    <h5>Referral Intel</h5>
                     <div className={analyticsStyles.list}>
                         {getTopList('referrer').map(([label, count]: any) => (
                             <div key={label} className={analyticsStyles.listItem}>
-                                <span className={analyticsStyles.listLabel}>{label}</span>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                                    <span className={analyticsStyles.listLabel} style={{ color: 'var(--foreground)' }}>{label}</span>
+                                    <span className={analyticsStyles.listValue} style={{ color: 'var(--primary)' }}>{count}</span>
+                                </div>
                                 <div className={analyticsStyles.listBarWrapper}>
-                                    <div className={analyticsStyles.listBar} style={{ width: `${(count / events.length) * 100}%`, opacity: 0.3 }}></div>
-                                    <span className={analyticsStyles.listValue}>{count}</span>
+                                    <div className={analyticsStyles.listBar} style={{ width: `${(count / events.length) * 100}%` }}></div>
                                 </div>
                             </div>
                         ))}
@@ -288,14 +355,16 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 <div className={analyticsStyles.detailCard}>
-                    <h5>Top Pages</h5>
+                    <h5>Path Popularity</h5>
                     <div className={analyticsStyles.list}>
                         {getTopList('path').map(([label, count]: any) => (
                             <div key={label} className={analyticsStyles.listItem}>
-                                <span className={analyticsStyles.listLabel}>{label}</span>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                                    <span className={analyticsStyles.listLabel} style={{ color: 'var(--foreground)' }}>{label}</span>
+                                    <span className={analyticsStyles.listValue} style={{ color: 'var(--primary)' }}>{count}</span>
+                                </div>
                                 <div className={analyticsStyles.listBarWrapper}>
-                                    <div className={analyticsStyles.listBar} style={{ width: `${(count / events.length) * 100}%`, background: '#10b981', opacity: 0.3 }}></div>
-                                    <span className={analyticsStyles.listValue}>{count}</span>
+                                    <div className={analyticsStyles.listBar} style={{ width: `${(count / events.length) * 100}%` }}></div>
                                 </div>
                             </div>
                         ))}
@@ -303,14 +372,16 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 <div className={analyticsStyles.detailCard}>
-                    <h5>Top Locations</h5>
+                    <h5>Geographic Corridors</h5>
                     <div className={analyticsStyles.list}>
                         {getGeoList().map(([label, count]: any) => (
                             <div key={label} className={analyticsStyles.listItem}>
-                                <span className={analyticsStyles.listLabel}>{label}</span>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                                    <span className={analyticsStyles.listLabel} style={{ color: 'var(--foreground)' }}>{label}</span>
+                                    <span className={analyticsStyles.listValue} style={{ color: 'var(--primary)' }}>{count}</span>
+                                </div>
                                 <div className={analyticsStyles.listBarWrapper}>
-                                    <div className={analyticsStyles.listBar} style={{ width: `${(count / events.length) * 100}%`, background: '#f59e0b', opacity: 0.3 }}></div>
-                                    <span className={analyticsStyles.listValue}>{count}</span>
+                                    <div className={analyticsStyles.listBar} style={{ width: `${(count / events.length) * 100}%` }}></div>
                                 </div>
                             </div>
                         ))}
@@ -318,13 +389,13 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 <div className={analyticsStyles.detailCard}>
-                    <h5>Devices</h5>
+                    <h5>Device Fingerprinting</h5>
                     <div className={analyticsStyles.deviceGrid}>
                         {getTopList('device_type', 3).map(([type, count]: any) => (
                             <div key={type} className={analyticsStyles.deviceItem}>
-                                {type === 'desktop' ? <Monitor size={18} /> : <Smartphone size={18} />}
+                                {type === 'desktop' ? <Monitor size={18} color="var(--primary)" /> : <Smartphone size={18} color="var(--primary)" />}
                                 <div className={analyticsStyles.deviceInfo}>
-                                    <span className={analyticsStyles.deviceLabel}>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+                                    <span className={analyticsStyles.deviceLabel} style={{ color: 'var(--foreground)' }}>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
                                     <span className={analyticsStyles.devicePercent}>{Math.round((count / events.length) * 100)}%</span>
                                 </div>
                             </div>
@@ -336,28 +407,28 @@ export default function AnalyticsDashboard() {
             {/* Individual Session Level Tracking */}
             <div className={analyticsStyles.sessionSection}>
                 <div className={analyticsStyles.chartHeader}>
-                    <h4>Recent Activity</h4>
-                    <span className={analyticsStyles.sessionBadge}>Live</span>
+                    <h4>Live Signal Feed</h4>
+                    <span className={analyticsStyles.sessionBadge} style={{ background: 'rgba(0, 235, 168, 0.1)', color: 'var(--primary)', border: '1px solid rgba(0, 235, 168, 0.2)' }}>Intelligence-Active</span>
                 </div>
                 <div className={analyticsStyles.sessionTableWrapper}>
                     <table className={analyticsStyles.sessionTable}>
                         <thead>
-                            <tr>
-                                <th>Visitor</th>
-                                <th>Location</th>
-                                <th>Event</th>
-                                <th>Page</th>
-                                <th>Time</th>
+                            <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                                <th style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>SCOUT ID</th>
+                                <th style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>LOCATION</th>
+                                <th style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>ACTION</th>
+                                <th style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>DESTINATION</th>
+                                <th style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>TIMESTAMP</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {events.slice(0, 10).map((e, i) => (
-                                <tr key={e.id}>
-                                    <td className={analyticsStyles.visitorId}>{e.visitor_id.substring(0, 8)}...</td>
-                                    <td>{e.metadata?.geo?.flag || '🌐'} {e.metadata?.geo?.country || 'Unknown'}</td>
-                                    <td><span style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase' }}>{e.event_name}</span></td>
+                            {events.slice(0, 15).map((e, i) => (
+                                <tr key={e.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                                    <td className={analyticsStyles.visitorId} style={{ opacity: 0.8 }}>{e.visitor_id.substring(0, 8).toUpperCase()}</td>
+                                    <td style={{ fontSize: '0.85rem' }}>{e.metadata?.geo?.flag || '🌐'} {e.metadata?.geo?.country || 'Unknown'}</td>
+                                    <td><span style={{ fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--primary)', background: 'rgba(0, 235, 168, 0.05)', padding: '4px 8px', borderRadius: '4px' }}>{e.event_name}</span></td>
                                     <td><span className={analyticsStyles.pathTag}>{e.path}</span></td>
-                                    <td>{new Date(e.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                                    <td style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{new Date(e.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
                                 </tr>
                             ))}
                         </tbody>

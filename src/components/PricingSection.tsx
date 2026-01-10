@@ -20,8 +20,10 @@ export default function PricingSection() {
             setLoadingTier(tierName);
 
             // Get current session
+            // Get current session
             const { data: { session } } = await supabase.auth.getSession();
             if (!session) {
+                toast('Please sign in to continue.', 'info');
                 window.location.href = '/login';
                 return;
             }
@@ -54,114 +56,102 @@ export default function PricingSection() {
         <section className={styles.section} id="pricing">
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <h2 className={styles.title}>Simple, predictable pricing</h2>
-                    <div className={styles.foundingNote}>Founding pricing — will increase</div>
+                    <h2 className={styles.title}>Simple, transparent pricing</h2>
+                    <div className={styles.foundingNote}>Scale from tool to transformation</div>
                 </header>
 
                 <div className={styles.grid}>
-                    {/* TIER 1: STARTER */}
+                    {/* TIER 1: AEO Core Platform */}
                     <div className={styles.card}>
-                        <div className={styles.tierName}>Starter</div>
+                        <div className={styles.tierName}>AEO Core Platform</div>
                         <div className={styles.priceWrapper}>
-                            <span className={styles.price}>$199</span>
-                            <span className={styles.period}>/ one-time</span>
+                            <span className={styles.price}>$99</span>
+                            <span className={styles.period}>/ month</span>
                         </div>
-                        <p className={styles.tagline}>Everything you need to kickstart your client acquisition.</p>
+                        <p className={styles.tagline}>Self-service tools to manage your own AI readiness.</p>
 
                         <div className={styles.featureList}>
-                            <div className={styles.featureGroupTitle}>What you get</div>
-                            <div className={styles.featureItem}><CheckIcon /> All lead generation features</div>
-                            <div className={styles.featureItem}><CheckIcon /> Unlimited leads / contacts</div>
-                            <div className={styles.featureItem}><CheckIcon /> All contact information</div>
-                            <div className={styles.featureItem}><CheckIcon /> Export to Notion, Sheets, Zapier</div>
-                            <div className={styles.featureItem}><CheckIcon /> All market signals</div>
-                            <div className={styles.featureItem}><CheckIcon /> Email + LinkedIn + Twitter + Phone</div>
-                            <div className={styles.featureItem}><CheckIcon /> Email accuracy priority</div>
-
-                            <div className={styles.featureGroupTitle}>Limits</div>
-                            <div className={styles.featureItem} style={{ color: '#9ca3af' }}><CheckIcon /> No recurring platform updates</div>
+                            <div className={styles.featureGroupTitle}>Software Suite</div>
+                            <div className={styles.featureItem}><CheckIcon /> AI Answer Audit & Monitoring</div>
+                            <div className={styles.featureItem}><CheckIcon /> Content Snippification Engine</div>
+                            <div className={styles.featureItem}><CheckIcon /> Structured Data Manager</div>
+                            <div className={styles.featureItem}><CheckIcon /> Multi-Index Crawlability</div>
+                            <div className={styles.featureItem}><CheckIcon /> AI Asset Generator</div>
+                            <div className={styles.featureItem}><CheckIcon /> Access to Market Radar</div>
                         </div>
 
                         <button
                             disabled={loadingTier !== null}
-                            onClick={() => handleCheckout('Starter', process.env.NEXT_PUBLIC_DODO_STARTER_ID || 'p_starter')}
-                            className={`${styles.cta} ${styles.ctaSecondary}`}
+                            onClick={() => handleCheckout('Core Platform', process.env.NEXT_PUBLIC_DODO_STARTER_ID || 'p_starter')}
+                            className={`${styles.cta} ${styles.ctaLengthy}`}
+                            style={{ background: '#333', color: '#fff' }}
                         >
-                            {loadingTier === 'Starter' ? 'Processing...' : (
-                                <>Get Starter <span style={{ fontSize: '1.1rem', marginLeft: '4px' }}>→</span></>
+                            {loadingTier === 'Core Platform' ? 'Processing...' : (
+                                <>Get Access <span style={{ fontSize: '1.1rem', marginLeft: '4px' }}>→</span></>
                             )}
                         </button>
-                        <div className={styles.positioning}>“Get clients now. No subscription.”</div>
+                        <div className={styles.positioning}>“See the problem.”</div>
                     </div>
 
-                    {/* TIER 2: GROWTH (MOST POPULAR) */}
+                    {/* TIER 2: AEO Content Sprint */}
                     <div className={`${styles.card} ${styles.highlightCard}`}>
                         <div className={styles.popularBadge}>Most Popular</div>
-                        <div className={styles.tierName}>Growth</div>
+                        <div className={styles.tierName}>AEO Content Sprint</div>
                         <div className={styles.priceWrapper}>
-                            <span className={styles.price}>$299</span>
-                            <span className={styles.period}>/ month</span>
+                            <span className={styles.price}>$1,469</span>
+                            <span className={styles.period}>/ sprint</span>
                         </div>
-                        <p className={styles.tagline}>For scaling agencies and dedicated sales teams.</p>
+                        <p className={styles.tagline}>Done-For-You implementation to become "answer-ready".</p>
 
                         <div className={styles.featureList}>
-                            <div className={styles.featureGroupTitle}>What you get</div>
-                            <div className={styles.featureItem}><CheckIcon /> All lead generation features</div>
-                            <div className={styles.featureItem}><CheckIcon /> Unlimited leads / contacts</div>
-                            <div className={styles.featureItem}><CheckIcon /> All contact information</div>
-                            <div className={styles.featureItem}><CheckIcon /> Export to Notion, Sheets, Zapier</div>
-                            <div className={styles.featureItem}><CheckIcon /> All market signals</div>
-                            <div className={styles.featureItem}><CheckIcon /> Email + LinkedIn + Twitter + Phone</div>
-                            <div className={styles.featureItem}><CheckIcon /> Platform Customizations</div>
-                            <div className={styles.featureItem}><CheckIcon /> Support</div>
-                            <div className={styles.featureItem}><CheckIcon /> Email accuracy priority</div>
+                            <div className={styles.featureGroupTitle}>Implementation Service</div>
+                            <div className={styles.featureItem}><CheckIcon /> Everything in Core Platform</div>
+                            <div className={styles.featureItem}><CheckIcon /> Manual "Answer Capsule" Rewrite</div>
+                            <div className={styles.featureItem}><CheckIcon /> LLM Citation Building</div>
+                            <div className={styles.featureItem}><CheckIcon /> Technical AEO Deployment</div>
+                            <div className={styles.featureItem}><CheckIcon /> Entity Recognition Boost</div>
+                            <div className={styles.featureItem}><CheckIcon /> JSON-LD Schema Deployment</div>
                         </div>
 
-                        <button
-                            disabled={loadingTier !== null}
-                            onClick={() => handleCheckout('Growth', process.env.NEXT_PUBLIC_DODO_GROWTH_ID || 'p_growth')}
+                        <a
+                            href="https://cal.com/tryventra/discoverycall"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className={`${styles.cta} ${styles.ctaPrimary}`}
                         >
-                            {loadingTier === 'Growth' ? 'Processing...' : (
-                                <>Get Growth <span style={{ fontSize: '1.1rem', marginLeft: '4px', color: '#fff' }}>→</span></>
-                            )}
-                        </button>
+                            Book Discovery Call <span style={{ fontSize: '1.1rem', marginLeft: '4px' }}>→</span>
+                        </a>
+                        <div className={styles.positioning}>“Fix the content.”</div>
                     </div>
 
-                    {/* TIER 3: AGENCY */}
+                    {/* TIER 3: Authority & Scale Engine */}
                     <div className={styles.card}>
-                        <div className={styles.tierName}>Agency</div>
+                        <div className={styles.tierName}>Authority Engine</div>
                         <div className={styles.priceWrapper}>
-                            <span className={styles.price}>$999</span>
+                            <span className={styles.price}>$3,948</span>
                             <span className={styles.period}>/ month</span>
                         </div>
-                        <p className={styles.tagline}>The ultimate AI-powered outbound engine.</p>
+                        <p className={styles.tagline}>Enterprise-level niche domination and scale.</p>
 
                         <div className={styles.featureList}>
-                            <div className={styles.featureGroupTitle}>What you get</div>
-                            <div className={styles.featureItem}><CheckIcon /> All lead generation features</div>
-                            <div className={styles.featureItem}><CheckIcon /> Unlimited leads / contacts</div>
-                            <div className={styles.featureItem}><CheckIcon /> All contact information</div>
-                            <div className={styles.featureItem}><CheckIcon /> Export to Notion, Sheets, Zapier</div>
-                            <div className={styles.featureItem}><CheckIcon /> All market signals</div>
-                            <div className={styles.featureItem}><CheckIcon /> Email + LinkedIn + Twitter + Phone</div>
-                            <div className={styles.featureItem}><CheckIcon /> Platform Customizations</div>
-                            <div className={styles.featureItem}><CheckIcon /> 24/7 Support</div>
-                            <div className={styles.featureItem}><CheckIcon /> Email accuracy priority</div>
-                            <div className={styles.featureItem}><CheckIcon /> Custom AI agent delivery</div>
-                            <div className={styles.featureItem}><CheckIcon /> Voice call AI agent 24/7</div>
+                            <div className={styles.featureGroupTitle}>Enterprise Partnership</div>
+                            <div className={styles.featureItem}><CheckIcon /> "House Answer" Strategy</div>
+                            <div className={styles.featureItem}><CheckIcon /> Competitor Intelligence & Gap Analysis</div>
+                            <div className={styles.featureItem}><CheckIcon /> Advanced Entity Building</div>
+                            <div className={styles.featureItem}><CheckIcon /> Share of Voice Management</div>
+                            <div className={styles.featureItem}><CheckIcon /> Optional Google Ads Increment</div>
+                            <div className={styles.featureItem}><CheckIcon /> Dedicated Account Manager</div>
                         </div>
 
-                        <button
-                            disabled={loadingTier !== null}
-                            onClick={() => handleCheckout('Agency', process.env.NEXT_PUBLIC_DODO_AGENCY_ID || 'p_agency')}
+                        <a
+                            href="https://cal.com/tryventra/discoverycall"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className={`${styles.cta} ${styles.ctaSecondary}`}
                         >
-                            {loadingTier === 'Agency' ? 'Processing...' : (
-                                <>Get Agency <span style={{ fontSize: '1.1rem', marginLeft: '4px' }}>→</span></>
-                            )}
-                        </button>
-                        <div className={styles.positioning}>“Replace junior SDRs with software.”</div>
+                            Contact Sales <span style={{ fontSize: '1.1rem', marginLeft: '4px' }}>→</span>
+                        </a>
+                        <div className={styles.positioning}>“Own the entity.”</div>
                     </div>
                 </div>
             </div>

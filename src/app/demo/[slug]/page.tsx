@@ -66,7 +66,7 @@ export default function VideoDemoPlaybackPage() {
         <div className={styles.wrapper}>
             <div className={styles.header}>
                 <div className={styles.logo}>
-                    <img src="/images/logo.png" alt="Ventra" className={styles.logoImage} />
+                    <img src="/images/logo.svg" alt="Ventra" className={styles.logoImage} />
                     <span>Ventra </span>
                 </div>
                 <h1 className={styles.title}>{demo.title}</h1>
@@ -84,7 +84,7 @@ export default function VideoDemoPlaybackPage() {
 
             <div className={styles.footer}>
                 <p>
-                    <img src="/images/logo.png" alt="Ventra" className={styles.footerLogo} />
+                    <img src="/images/logo.svg" alt="Ventra" className={styles.footerLogo} />
                     Made with Ventra Video
                 </p>
             </div>

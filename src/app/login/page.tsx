@@ -1,17 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { supabase } from "@/lib/supabase";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "../auth.module.css";
 
-export default function AuthPage() {
+function AuthContent() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const nextUrl = searchParams.get('next') || '/desk';
 
     const handleAuth = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -25,14 +27,15 @@ export default function AuthPage() {
                     password,
                 });
                 if (error) throw error;
-                router.push("/desk");
+                router.push(nextUrl);
             } else {
                 const { error } = await supabase.auth.signInWithPassword({
                     email,
                     password,
                 });
                 if (error) throw error;
-                router.push("/desk");
+                router.refresh(); // Refresh to update middleware state
+                router.push(nextUrl);
             }
         } catch (err: any) {
             setError(err.message);
@@ -45,7 +48,7 @@ export default function AuthPage() {
         <div className={styles.authContainer}>
             <div className={styles.authCard}>
                 <div className={styles.logoArea}>
-                    <img src="/images/logo.png" alt="Ventra Logo" width="24" height="24" style={{ objectFit: 'contain' }} />
+                    <img src="/images/logo.svg" alt="Ventra Logo" width="24" height="24" style={{ objectFit: 'contain' }} />
                     <span className={styles.logoText}>Ventra</span>
                 </div>
 
@@ -97,5 +100,13 @@ export default function AuthPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function AuthPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <AuthContent />
+        </Suspense>
     );
 }

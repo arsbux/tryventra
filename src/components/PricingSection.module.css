@@ -1,9 +1,9 @@
 .section {
     padding-top: 100px;
-    padding-bottom: 15px;
-    background: #fff;
+    padding-bottom: 80px;
+    background: #050505;
     width: 100%;
-    color: #000;
+    color: #fff;
     font-family: 'Inter', -apple-system, system-ui, sans-serif;
 }
 
@@ -32,13 +32,13 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #fffbeb;
-    color: #92400e;
+    background: rgba(0, 235, 168, 0.1);
+    color: #00eba8;
     padding: 6px 14px;
     border-radius: 99px;
     font-size: 0.8rem;
     font-weight: 700;
-    border: 1px solid #fef3c7;
+    border: 1px solid rgba(0, 235, 168, 0.2);
 }
 
 .grid {
@@ -50,14 +50,15 @@
 }
 
 .card {
-    background: white;
-    border: 1px solid #eaeaea;
-    border-radius: 16px;
+    background: #08080a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     padding: 32px;
     display: flex;
     flex-direction: column;
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
 }
 
 .card:hover {
@@ -66,8 +67,8 @@
 }
 
 .highlightCard {
-    border: 1.5px solid #000;
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.06);
+    border: 1.5px solid #00eba8;
+    box-shadow: 0 20px 40px -12px rgba(0, 235, 168, 0.15);
     z-index: 10;
 }
 
@@ -76,8 +77,8 @@
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background: #000;
-    color: #fff;
+    background: #00eba8;
+    color: #000;
     padding: 4px 12px;
     border-radius: 99px;
     font-size: 0.65rem;
@@ -87,12 +88,10 @@
 }
 
 .tierName {
-    font-size: 0.725rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #666;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
 }
 
 .priceWrapper {
@@ -103,23 +102,25 @@
 }
 
 .price {
-    font-size: 3rem;
-    font-weight: 900;
-    letter-spacing: -0.05em;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00eba8;
     line-height: 1;
 }
 
 .period {
     font-size: 0.9rem;
-    color: #888;
-    font-weight: 600;
+    color: #666;
+    font-weight: 500;
 }
 
 .tagline {
-    font-size: 0.85rem;
-    color: #4b5563;
+    font-size: 0.9rem;
+    color: #888;
     line-height: 1.5;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .cta {
@@ -142,22 +143,22 @@
 }
 
 .ctaPrimary {
-    background: #000;
-    color: #fff;
+    background: #00eba8;
+    color: #000;
 }
 
 .ctaPrimary:hover {
-    background: #222;
+    background: #00d496;
 }
 
 .ctaSecondary {
-    background: #fff;
-    color: #000;
-    border: 1px solid #eaeaea;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ctaSecondary:hover {
-    background: #fafafa;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .featureList {
@@ -168,30 +169,32 @@
 }
 
 .featureGroupTitle {
-    font-weight: 800;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #999;
-    margin: 16px 0 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 0 0 16px;
 }
 
 .featureItem {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #374151;
-    line-height: 1.4;
+    gap: 12px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #ccc;
+    line-height: 1.5;
 }
 
 .checkIcon {
     flex-shrink: 0;
-    width: 14px;
-    height: 14px;
-    color: #10b981;
-    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    color: #00eba8;
+    margin-top: 4px;
+    background: rgba(0, 235, 168, 0.1);
+    border: 1px solid #00eba8;
+    border-radius: 3px;
+    padding: 2px;
 }
 
 .positioning {
